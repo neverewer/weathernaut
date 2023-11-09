@@ -1,10 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:weathernaut/import.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+@RoutePage()
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold();
   }
 }

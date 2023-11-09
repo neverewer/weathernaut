@@ -1,14 +1,26 @@
+import 'dart:io';
+import 'package:flutter_gen/gen_l10n/localizations.dart';
 import 'package:weathernaut/import.dart';
+import 'package:weathernaut/src/core/router/app_router.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  final AppRouter router;
+
+  const App({
+    super.key,
+    required this.router,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      debugShowMaterialGrid: false,
-      home: Scaffold(),
-    );
+    final routerConfig = router.config();
+
+    return MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        debugShowMaterialGrid: false,
+        locale: Locale(Platform.localeName),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        routerConfig: routerConfig);
   }
 }
