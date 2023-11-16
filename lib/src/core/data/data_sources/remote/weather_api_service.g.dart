@@ -21,7 +21,8 @@ class _WeatherApiService implements WeatherApiService {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<WeatherModel>> getWeatherForecastFromLocation({
+  Future<HttpResponse<CurrentWeatherModel>>
+      getCurrentWeatherForecastFromLocation({
     String? key,
     String? q,
     int? days,
@@ -40,7 +41,7 @@ class _WeatherApiService implements WeatherApiService {
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<WeatherModel>>(Options(
+        _setStreamType<HttpResponse<CurrentWeatherModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -56,7 +57,49 @@ class _WeatherApiService implements WeatherApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = WeatherModel.fromJson(_result.data!);
+    final value = CurrentWeatherModel.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<WeaklyWeatherModel>>
+      getWeaklyWeatherForecastFromLocation({
+    String? key,
+    String? q,
+    int? days,
+    int? hour,
+    String? lang,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'key': key,
+      r'q': q,
+      r'days': days,
+      r'hour': hour,
+      r'lang': lang,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<WeaklyWeatherModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/forecast.json',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = WeaklyWeatherModel.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }
