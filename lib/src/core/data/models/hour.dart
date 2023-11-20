@@ -113,5 +113,9 @@ class HourModel {
 
   Map<String, dynamic> toJson() => _$HourModelToJson(this);
 
-  HourEntity toEntity() => HourEntity(time: time, temp: tempF, conditionImageUrl: condition.icon);
+  HourEntity toEntity() => HourEntity(
+        time: time,
+        temp: tempF.toInt(),
+        conditionImageUrl: condition.icon,
+      );
 }
