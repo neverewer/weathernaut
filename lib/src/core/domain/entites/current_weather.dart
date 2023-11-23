@@ -2,10 +2,10 @@ import 'package:weathernaut/src/core/domain/entites/hour.dart';
 
 class CurrentWeatherEntity {
   final String location;
-  final DateTime date;
-  final double temp;
+  final String formattedDate;
+  final int temp;
   final String conditionText;
-  final String conditionImageUrl;
+  final String conditionImagePath;
   final double windSpeed;
   final int rainfall;
   final int humidity;
@@ -13,10 +13,10 @@ class CurrentWeatherEntity {
 
   CurrentWeatherEntity({
     required this.location,
-    required this.date,
+    required this.formattedDate,
     required this.temp,
     required this.conditionText,
-    required this.conditionImageUrl,
+    required this.conditionImagePath,
     required this.windSpeed,
     required this.rainfall,
     required this.humidity,

@@ -1,4 +1,4 @@
-import 'package:weathernaut/import.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:weathernaut/src/core/data/models/current.dart';
 import 'package:weathernaut/src/core/data/models/forecast.dart';
 import 'package:weathernaut/src/core/data/models/location.dart';

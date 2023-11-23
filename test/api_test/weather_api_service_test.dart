@@ -3,10 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:weathernaut/import.dart';
 import 'package:weathernaut/src/core/data/data_sources/remote/weather_api_service.dart';
 import 'package:weathernaut/src/core/data/models/current_weather.dart';
 import 'package:weathernaut/src/core/data/models/weakly_weather.dart';
+import 'package:weathernaut/src/core/utils/constants/strings.dart';
 
 import 'current_weather_map.dart';
 import 'weakly_weather_map.dart';

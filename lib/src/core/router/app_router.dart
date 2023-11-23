@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:weathernaut/src/features/home/home_page.dart';
+import 'package:weathernaut/src/features/home/presentation/home_page.dart';
 
 part 'app_router.gr.dart';
 

@@ -1,8 +1,8 @@
-class LocationEntity {
+class PositionEntity {
   final double lat;
   final double lon;
 
-  LocationEntity({
+  PositionEntity({
     required this.lat,
     required this.lon,
   });

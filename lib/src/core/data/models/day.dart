@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:weathernaut/src/core/data/models/condition.dart';
+import 'package:weathernaut/src/core/domain/entites/day.dart';
 
 part 'day.g.dart';
 
@@ -72,4 +73,11 @@ class DayModel {
   factory DayModel.fromJson(Map<String, dynamic> json) => _$DayModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$DayModelToJson(this);
+
+  DayEntity toEntity() => DayEntity(
+        maxTemp: maxtempC,
+        maxWindSpeed: maxwindKph,
+        humidity: avghumidity.toInt(),
+        rainfall: totalprecipMm ~/ 100,
+      );
 }

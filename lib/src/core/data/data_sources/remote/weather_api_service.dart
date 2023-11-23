@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:weathernaut/import.dart';
 import 'package:weathernaut/src/core/data/models/current_weather.dart';
 import 'package:weathernaut/src/core/data/models/weakly_weather.dart';
+import 'package:weathernaut/src/core/utils/constants/strings.dart';
 
 part 'weather_api_service.g.dart';
 

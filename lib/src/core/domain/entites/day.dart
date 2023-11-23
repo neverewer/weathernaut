@@ -1,12 +1,12 @@
 class DayEntity {
-  final double temp;
-  final double windSpeed;
+  final double maxTemp;
+  final double maxWindSpeed;
   final int humidity;
   final int rainfall;
 
   DayEntity({
-    required this.temp,
-    required this.windSpeed,
+    required this.maxTemp,
+    required this.maxWindSpeed,
     required this.humidity,
     required this.rainfall,
   });

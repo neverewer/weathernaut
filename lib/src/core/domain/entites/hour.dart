@@ -1,6 +1,6 @@
 class HourEntity {
   final String time;
-  final double temp;
+  final int temp;
   final String conditionImageUrl;
 
   HourEntity({

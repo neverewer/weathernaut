@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:weathernaut/import.dart';
 import 'package:weathernaut/src/core/data/data_sources/remote/weather_api_service.dart';
 import 'package:weathernaut/src/core/domain/entites/current_weather.dart';
 import 'package:weathernaut/src/core/domain/entites/day.dart';
 import 'package:weathernaut/src/core/domain/repositories/weather_repository.dart';
+import 'package:weathernaut/src/core/utils/constants/strings.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {
   final WeatherApiService weatherApiService;
