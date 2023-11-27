@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:weathernaut/src/core/data/data_sources/remote/weather_api_service.dart';
@@ -7,6 +8,7 @@ import 'package:weathernaut/src/core/domain/entites/day.dart';
 import 'package:weathernaut/src/core/domain/repositories/weather_repository.dart';
 import 'package:weathernaut/src/core/utils/constants/strings.dart';
 import 'package:weathernaut/src/core/utils/exceptions/network_exceptions.dart';
+import 'package:weathernaut/src/core/utils/extensions/string_extension.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {
   final WeatherApiService weatherApiService;
@@ -23,7 +25,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
         q: location,
         days: 1,
         tp: 15,
-        lang: null,
+        lang: Platform.localeName.getShortLocaleName(),
       );
 
       var currentWeather = response.data.toEntity();
@@ -58,7 +60,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
         q: location,
         days: 8,
         hour: 24,
-        lang: null,
+        lang: Platform.localeName.getShortLocaleName(),
       );
 
       var weaklyWeatherForecast = response.data.forecast.forecastday.map((e) => e.day.toEntity(e.date)).toList();

@@ -5,7 +5,12 @@ class Themes {
 
   static ThemeData getTheme() => ThemeData(
         scaffoldBackgroundColor: Colors.transparent,
-        appBarTheme: const AppBarTheme(foregroundColor: Color(0xFF313341)),
+        appBarTheme: const AppBarTheme(
+          foregroundColor: Color(0xFF313341),
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+        ),
         // textTheme: const TextTheme(
         //   bodyMedium: ,
         //   displayMedium: TextStyle(color: Colors.green),

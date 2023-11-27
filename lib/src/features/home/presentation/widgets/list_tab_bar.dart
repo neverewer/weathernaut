@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:weathernaut/src/core/domain/entites/day.dart';
 import 'package:weathernaut/src/core/router/app_router.dart';
+import 'package:weathernaut/src/core/utils/extensions/context_extension.dart';
 
 class ListTabBar extends StatelessWidget {
   final List<DayEntity>? weaklyWeatherForecast;
@@ -17,9 +18,9 @@ class ListTabBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
-          '24h forecast',
-          style: TextStyle(
+        Text(
+          context.localization.hourlyForecastLabel,
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
             color: Color(0xFF313341),
@@ -33,9 +34,9 @@ class ListTabBar extends StatelessWidget {
               ));
             }
           },
-          child: const Text(
-            'Next 7 days >',
-            style: TextStyle(
+          child: Text(
+            '${context.localization.next7Days} >',
+            style: const TextStyle(
               fontSize: 20,
               color: Color(0XFFd6996b),
             ),

@@ -25,7 +25,7 @@ class App extends StatelessWidget {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         debugShowMaterialGrid: false,
-        locale: Locale(Platform.localeName),
+        // locale: Locale(Platform.localeName),
         theme: Themes.getTheme(),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,

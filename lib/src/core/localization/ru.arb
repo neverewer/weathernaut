@@ -1,3 +1,11 @@
 {
-    "@@locale": "ru"
+    "@@locale": "ru",
+    "rainfall" : "Осадки",
+    "rainfallUnitOfMeasurement": "см",
+    "wind" : "Ветер",
+    "windUnitOfMeasurement": "км/ч",
+    "humidity" : "Влажность",
+    "hourlyForecastLabel" : "24ч прогноз",
+    "next7Days" : "След. 7 дней",
+    "now" : "Сейчас"
 }

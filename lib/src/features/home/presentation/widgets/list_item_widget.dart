@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weathernaut/src/core/presentation/widgets/rounded_box.dart';
+import 'package:weathernaut/src/core/utils/extensions/context_extension.dart';
 import 'package:weathernaut/src/features/home/presentation/widgets/temp_widget.dart';
 
 class ListItemWidget extends StatelessWidget {
@@ -29,7 +30,7 @@ class ListItemWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
-              isNow ? 'now' : time,
+              isNow ? context.localization.now : time,
               style: const TextStyle(
                 fontSize: 16,
                 color: Color(0XFF9f978f),

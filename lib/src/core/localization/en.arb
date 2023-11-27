@@ -1,3 +1,11 @@
 {
-    "@@locale": "en"
+    "@@locale": "en",
+    "rainfall" : "Rainfall",
+    "rainfallUnitOfMeasurement": "cm",
+    "wind" : "Wind",
+    "windUnitOfMeasurement": "km/h",
+    "humidity" : "Humidity",
+    "hourlyForecastLabel" : "24h forecast",
+    "next7Days" : "Next 7 days",
+    "now" : "now"
 }

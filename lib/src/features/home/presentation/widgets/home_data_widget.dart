@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weathernaut/src/core/domain/entites/current_weather.dart';
 import 'package:weathernaut/src/core/domain/entites/day.dart';
+import 'package:weathernaut/src/core/utils/extensions/context_extension.dart';
 import 'package:weathernaut/src/features/home/presentation/bloc/home_bloc.dart';
 import 'package:weathernaut/src/features/home/presentation/bloc/home_event.dart';
 import 'package:weathernaut/src/features/home/presentation/widgets/condition_widget.dart';
@@ -62,19 +63,19 @@ class HomeDataWidget extends StatelessWidget {
                         const SizedBox(height: 35),
                         WeatherStatWidget(
                           leadingImagePath: 'assets/images/stats/rainfall.png',
-                          label: 'RainFall',
-                          value: '${currentWeatherForecast.rainfall}cm',
+                          label: context.localization.rainfall,
+                          value: '${currentWeatherForecast.rainfall}${context.localization.rainfallUnitOfMeasurement}',
                         ),
                         const SizedBox(height: 15),
                         WeatherStatWidget(
                           leadingImagePath: 'assets/images/stats/wind.png',
-                          label: 'Wind',
-                          value: '${currentWeatherForecast.windSpeed}km/h',
+                          label: context.localization.wind,
+                          value: '${currentWeatherForecast.windSpeed}${context.localization.windUnitOfMeasurement}',
                         ),
                         const SizedBox(height: 15),
                         WeatherStatWidget(
                           leadingImagePath: 'assets/images/stats/humidity.png',
-                          label: 'Humidity',
+                          label: context.localization.humidity,
                           value: '${currentWeatherForecast.humidity}%',
                         ),
                         const Spacer(),
