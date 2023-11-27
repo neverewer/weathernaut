@@ -18,14 +18,23 @@ abstract class _$AppRouter extends RootStackRouter {
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const HomePage(),
+        child: const HomeScreen(),
       );
-    }
+    },
+    WeaklyForecastRoute.name: (routeData) {
+      final args = routeData.argsAs<WeaklyForecastRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WeaklyForecastScreen(
+          weaklyWeatherForecast: args.weaklyWeatherForecast,
+        ),
+      );
+    },
   };
 }
 
 /// generated route for
-/// [HomePage]
+/// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
       : super(
@@ -36,4 +45,36 @@ class HomeRoute extends PageRouteInfo<void> {
   static const String name = 'HomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [WeaklyForecastScreen]
+class WeaklyForecastRoute extends PageRouteInfo<WeaklyForecastRouteArgs> {
+  WeaklyForecastRoute({
+    required List<DayEntity> weaklyWeatherForecast,
+    List<PageRouteInfo>? children,
+  }) : super(
+          WeaklyForecastRoute.name,
+          args: WeaklyForecastRouteArgs(
+            weaklyWeatherForecast: weaklyWeatherForecast,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'WeaklyForecastRoute';
+
+  static const PageInfo<WeaklyForecastRouteArgs> page = PageInfo<WeaklyForecastRouteArgs>(name);
+}
+
+class WeaklyForecastRouteArgs {
+  const WeaklyForecastRouteArgs({
+    required this.weaklyWeatherForecast,
+  });
+
+  final List<DayEntity> weaklyWeatherForecast;
+
+  @override
+  String toString() {
+    return 'WeaklyForecastRouteArgs{weaklyWeatherForecast: $weaklyWeatherForecast}';
+  }
 }

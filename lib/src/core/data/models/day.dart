@@ -1,6 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:weathernaut/src/core/data/models/condition.dart';
 import 'package:weathernaut/src/core/domain/entites/day.dart';
+import 'package:weathernaut/src/core/utils/extensions/date_time_extension.dart';
+import 'package:weathernaut/src/core/utils/image_utils.dart';
 
 part 'day.g.dart';
 
@@ -74,10 +76,11 @@ class DayModel {
 
   Map<String, dynamic> toJson() => _$DayModelToJson(this);
 
-  DayEntity toEntity() => DayEntity(
-        maxTemp: maxtempC,
-        maxWindSpeed: maxwindKph,
-        humidity: avghumidity.toInt(),
-        rainfall: totalprecipMm ~/ 100,
-      );
+  DayEntity toEntity(DateTime date) => DayEntity(
+      dayOfWeek: date.getStringDayOfWeek(),
+      maxTemp: maxtempC,
+      maxWindSpeed: maxwindKph,
+      humidity: avghumidity.toInt(),
+      rainfall: totalprecipMm ~/ 100,
+      conditionImagePath: ImageUtils.getImagePathFromCode(conditionCode: condition.code));
 }

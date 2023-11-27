@@ -11,8 +11,12 @@ class PositionRepositoryImp implements PositionRepository {
 
   @override
   Future<PositionEntity> getCurrentPosition() async {
-    final geoPosition = await positionService.getCurrentPosition();
-    final position = geoPosition.toEntity();
-    return position;
+    try {
+      final geoPosition = await positionService.getCurrentPosition();
+      final position = geoPosition.toEntity();
+      return position;
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(e, stackTrace);
+    }
   }
 }

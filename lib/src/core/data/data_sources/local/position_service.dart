@@ -3,13 +3,17 @@ import 'package:weathernaut/src/core/data/models/position.dart';
 
 class PositionService {
   Future<PositionModel> getCurrentPosition() async {
-    final geoPosition = await Geolocator.getCurrentPosition();
+    try {
+      final geoPosition = await Geolocator.getCurrentPosition();
 
-    final position = PositionModel(
-      lat: geoPosition.latitude,
-      lon: geoPosition.longitude,
-    );
+      final position = PositionModel(
+        lat: geoPosition.latitude,
+        lon: geoPosition.longitude,
+      );
 
-    return position;
+      return position;
+    } on Object catch (e, stackTrace) {
+      Error.throwWithStackTrace(e, stackTrace);
+    }
   }
 }

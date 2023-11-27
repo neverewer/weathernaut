@@ -1,6 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:weathernaut/src/core/data/models/condition.dart';
 import 'package:weathernaut/src/core/domain/entites/hour.dart';
+import 'package:weathernaut/src/core/utils/extensions/string_extension.dart';
+import 'package:weathernaut/src/core/utils/time_utils.dart';
+import 'package:weathernaut/src/core/utils/image_utils.dart';
 
 part 'hour.g.dart';
 
@@ -113,9 +116,13 @@ class HourModel {
 
   Map<String, dynamic> toJson() => _$HourModelToJson(this);
 
-  HourEntity toEntity() => HourEntity(
-        time: time,
-        temp: tempF.toInt(),
-        conditionImageUrl: condition.icon,
-      );
+  HourEntity toEntity() {
+    final stringTime = time.getFormattedTimeString();
+    return HourEntity(
+      isNow: TimeUtils.getTimeHour(stringTime) == DateTime.now().hour,
+      time: stringTime,
+      temp: tempC.toInt(),
+      conditionImageUrl: ImageUtils.getImagePathFromCode(conditionCode: condition.code, isDay: isDay),
+    );
+  }
 }

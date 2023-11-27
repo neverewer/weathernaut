@@ -11,6 +11,7 @@ class ConditionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
         condition,
+        maxLines: 3,
         style: const TextStyle(
           fontSize: 34,
           fontWeight: FontWeight.w400,

@@ -8,8 +8,12 @@ class GetPositionUseCase {
   GetPositionUseCase({required this.positionRepository});
 
   Future<PositionEntity> call() async {
-    await Geolocator.requestPermission();
-    final position = await positionRepository.getCurrentPosition();
-    return position;
+    try {
+      await Geolocator.requestPermission();
+      final position = await positionRepository.getCurrentPosition();
+      return position;
+    } on Object catch (e, stackTrace) {
+      Error.throwWithStackTrace(e, stackTrace);
+    }
   }
 }

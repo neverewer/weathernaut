@@ -16,8 +16,7 @@ final class HomeEvent$Fetch extends HomeEvent {
   const HomeEvent$Fetch();
 }
 
-/// Pattern matching for [HomeState].
-typedef HomeEventMatch<R, S extends HomeEvent> = R Function(S state);
+typedef HomeEventMatch<R, S extends HomeEvent> = R Function(S event);
 
 @immutable
 abstract base class _$HomeEventBase {

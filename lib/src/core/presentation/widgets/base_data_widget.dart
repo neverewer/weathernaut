@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+@Deprecated('In MaterialApp.router builder set background')
 abstract class BaseDataWidget extends StatelessWidget {
   const BaseDataWidget({super.key});
 
@@ -9,16 +10,7 @@ abstract class BaseDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Color(0xFFFEE3BC),
-            Color(0XFFF39876),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
+      decoration: const BoxDecoration(),
       child: buildChild(context),
     );
   }
