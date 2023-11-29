@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:weathernaut/src/core/data/data_sources/remote/weather_api_service.dart';
 import 'package:weathernaut/src/core/data/models/current_weather.dart';
-import 'package:weathernaut/src/core/data/models/weakly_weather.dart';
+import 'package:weathernaut/src/core/data/models/daily_weather.dart';
 import 'package:weathernaut/src/core/utils/constants/strings.dart';
 
 import 'current_weather_map.dart';
@@ -53,8 +53,8 @@ void main() {
     });
 
     test('getWeaklyWeatherForecastFromLocation', () async {
-      final response = HttpResponse<WeaklyWeatherModel>(
-        WeaklyWeatherModel.fromJson(weaklyWeatherMap),
+      final response = HttpResponse<DailyWeatherModel>(
+        DailyWeatherModel.fromJson(weaklyWeatherMap),
         Response<dynamic>(
           statusCode: 200,
           requestOptions: RequestOptions(path: ''),
@@ -62,11 +62,11 @@ void main() {
       );
       const key = weatherApiKey;
       const q = 'Hrodna';
-      const days = 8;
+      const days = 3;
       const hour = 24;
       const lang = null;
 
-      when(mockWeatherApiService.getWeaklyWeatherForecastFromLocation(
+      when(mockWeatherApiService.getDailyWeatherForecastFromLocation(
         key: key,
         q: q,
         days: days,
@@ -74,7 +74,7 @@ void main() {
         lang: lang,
       )).thenAnswer((_) async => response);
 
-      final result = await mockWeatherApiService.getWeaklyWeatherForecastFromLocation(
+      final result = await mockWeatherApiService.getDailyWeatherForecastFromLocation(
         key: key,
         q: q,
         days: days,

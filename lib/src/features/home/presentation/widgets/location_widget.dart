@@ -15,7 +15,7 @@ class LocationWidget extends StatelessWidget {
       child: Text(
         text,
         style: const TextStyle(
-          fontSize: 36,
+          fontSize: 34,
           fontWeight: FontWeight.w500,
           color: Color(0xFF313341),
         ),

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:weathernaut/src/core/data/models/current_weather.dart';
-import 'package:weathernaut/src/core/data/models/weakly_weather.dart';
+import 'package:weathernaut/src/core/data/models/daily_weather.dart';
 import 'package:weathernaut/src/core/utils/constants/strings.dart';
 
 part 'weather_api_service.g.dart';
@@ -20,7 +20,7 @@ abstract class WeatherApiService {
   });
 
   @GET('/forecast.json')
-  Future<HttpResponse<WeaklyWeatherModel>> getWeaklyWeatherForecastFromLocation({
+  Future<HttpResponse<DailyWeatherModel>> getDailyWeatherForecastFromLocation({
     @Query('key') required String? key,
     @Query('q') required String? q,
     @Query('days') required int? days,

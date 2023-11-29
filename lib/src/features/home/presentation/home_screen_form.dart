@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weathernaut/src/core/presentation/widgets/error_widget.dart';
+import 'package:weathernaut/src/core/presentation/widgets/failture_widget.dart';
 import 'package:weathernaut/src/core/presentation/widgets/loading_widget.dart';
 import 'package:weathernaut/src/features/home/presentation/bloc/home_bloc.dart';
 import 'package:weathernaut/src/features/home/presentation/bloc/home_event.dart';
@@ -16,18 +16,18 @@ class HomeScreenForm extends StatelessWidget {
       builder: (context, state) => state.map(
         idle: (_) => const LoadingWidget(),
         processing: (_) => const LoadingWidget(),
-        successful: (_) => state.hasCurrentWeatherForecast
+        successful: (_) => state.hasCurrentWeatherForecast && state.hasDailyWeatherForecast
             ? HomeDataWidget(
                 currentWeatherForecast: state.currentWeatherForecast!,
-                weaklyWeatherForecast: state.weaklyWeatherForecast,
+                dailyWeatherForecast: state.dailyWeatherForecast!,
               )
             : FailtureWidget(
                 errorButtonCallback: () => context.read<HomeBLoC>().add(
                       const HomeEvent.fetch(),
                     ),
               ),
-        error: (_) => FailtureWidget(
-          errorMessage: state.message,
+        error: (state) => FailtureWidget(
+          error: state.error,
           errorButtonCallback: () => context.read<HomeBLoC>().add(
                 const HomeEvent.fetch(),
               ),

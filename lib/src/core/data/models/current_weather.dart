@@ -4,7 +4,7 @@ import 'package:weathernaut/src/core/data/models/forecast.dart';
 import 'package:weathernaut/src/core/data/models/location.dart';
 import 'package:weathernaut/src/core/domain/entites/current_weather.dart';
 import 'package:weathernaut/src/core/utils/extensions/string_extension.dart';
-import 'package:weathernaut/src/core/utils/time_utils.dart';
+import 'package:weathernaut/src/core/utils/date_time_utils.dart';
 import 'package:weathernaut/src/core/utils/image_utils.dart';
 
 part 'current_weather.g.dart';
@@ -30,7 +30,7 @@ class CurrentWeatherModel {
 
   CurrentWeatherEntity toEntity() => CurrentWeatherEntity(
       location: '${location.country},\n${location.name}',
-      formattedDate: location.localtime.getFormattedDateString(),
+      formattedDate: DateTimeUtils.getFormattedDateString(location.localtime),
       temp: current.tempC.toInt(),
       conditionText: current.condition.text,
       conditionImagePath: ImageUtils.getImagePathFromCode(conditionCode: current.condition.code, isDay: current.isDay),
@@ -40,6 +40,6 @@ class CurrentWeatherModel {
       hourForecast: forecast.forecastday
           .map((forecastDay) => forecastDay.hour)
           .expand((hourList) => hourList.map((e) => e.toEntity()))
-          .where((hourEntity) => TimeUtils.getTimeHour(hourEntity.time) >= DateTime.now().hour)
+          .where((hourEntity) => DateTimeUtils.getTimeHour(hourEntity.time) >= DateTime.now().hour)
           .toList());
 }

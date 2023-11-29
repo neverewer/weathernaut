@@ -7,6 +7,7 @@ class RoundedBox extends StatelessWidget {
   final Alignment? childAlignment;
   final Widget child;
   final Color? backgroundColor;
+  final EdgeInsets? contentPadding;
 
   const RoundedBox({
     super.key,
@@ -16,24 +17,16 @@ class RoundedBox extends StatelessWidget {
     this.childAlignment,
     required this.child,
     this.backgroundColor,
+    this.contentPadding,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: width ?? double.infinity,
-        height: height ?? 80,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: backgroundColor ?? Colors.white.withOpacity(0.55),
-            borderRadius: BorderRadius.all(
-              Radius.circular(borderRadius ?? 15),
-            ),
-          ),
-          child: Align(
-            alignment: Alignment.center,
-            child: child,
-          ),
-        ));
+    return DecoratedBox(
+      decoration: BoxDecoration(
+          color: backgroundColor ?? Colors.white.withOpacity(0.5),
+          borderRadius: BorderRadius.all(Radius.circular(borderRadius ?? 16))),
+      child: Padding(padding: contentPadding ?? EdgeInsets.zero, child: child),
+    );
   }
 }

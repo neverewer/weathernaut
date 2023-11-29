@@ -16,19 +16,34 @@ class WeatherStatWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RoundedBox(
+      contentPadding: const EdgeInsets.only(top: 10, right: 35, left: 15, bottom: 10),
       child: ListTile(
-        contentPadding: const EdgeInsets.only(left: 15, right: 35),
-        leading: DecoratedBox(
-          decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(10))),
-          child: Padding(
-            padding: const EdgeInsets.all(4),
-            child: Image.asset(
-              leadingImagePath,
-              width: 35,
-              height: 35,
-            ),
-          ),
-        ),
+        contentPadding: EdgeInsets.zero,
+        leading:
+            // DecoratedBox(
+            //   decoration: const BoxDecoration(
+            //     color: Colors.white,
+            //     borderRadius: BorderRadius.all(Radius.circular(10)),
+            //   ),
+            //   child: Padding(
+            //     padding: const EdgeInsets.all(4),
+            //     child: Image.asset(
+            //       leadingImagePath,
+            //       width: 35,
+            //       height: 35,
+            //     ),
+            //   ),
+            // ),
+
+            RoundedBox(
+                borderRadius: 10,
+                contentPadding: const EdgeInsets.all(4),
+                backgroundColor: Colors.white,
+                child: Image.asset(
+                  leadingImagePath,
+                  width: 35,
+                  height: 35,
+                )),
         title: Text(
           label,
           style: const TextStyle(

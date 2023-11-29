@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'weakly_weather.dart';
+part of 'daily_weather.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-WeaklyWeatherModel _$WeaklyWeatherModelFromJson(Map<String, dynamic> json) =>
-    WeaklyWeatherModel(
+DailyWeatherModel _$DailyWeatherModelFromJson(Map<String, dynamic> json) =>
+    DailyWeatherModel(
       location:
           LocationModel.fromJson(json['location'] as Map<String, dynamic>),
       current: CurrentModel.fromJson(json['current'] as Map<String, dynamic>),
@@ -15,7 +15,7 @@ WeaklyWeatherModel _$WeaklyWeatherModelFromJson(Map<String, dynamic> json) =>
           ForecastModel.fromJson(json['forecast'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$WeaklyWeatherModelToJson(WeaklyWeatherModel instance) =>
+Map<String, dynamic> _$DailyWeatherModelToJson(DailyWeatherModel instance) =>
     <String, dynamic>{
       'location': instance.location,
       'current': instance.current,

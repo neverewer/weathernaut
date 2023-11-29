@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 import 'package:weathernaut/src/core/router/app_router.dart';
@@ -25,26 +24,14 @@ class App extends StatelessWidget {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         debugShowMaterialGrid: false,
-        // locale: Locale(Platform.localeName),
         theme: Themes.getTheme(),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         routerConfig: routerConfig,
-        // builder: (_, child) => Scaffold(
-        //       body: DecoratedBox(
-        //         decoration: const BoxDecoration(
-        //           gradient: LinearGradient(
-        //             colors: [
-        //               Color(0xFFFEE3BC),
-        //               Color(0XFFF39876),
-        //             ],
-        //             begin: Alignment.topLeft,
-        //             end: Alignment.bottomRight,
-        //           ),
-        //         ),
-        //         child: child,
-        //       ),
-        //     )
+        builder: (context, child) => MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+          child: child ?? const SizedBox.shrink(),
+        ),
       ),
     );
   }

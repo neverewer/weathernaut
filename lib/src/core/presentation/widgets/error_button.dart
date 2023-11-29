@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weathernaut/src/core/utils/extensions/context_extension.dart';
 
 class ErrorButton extends StatelessWidget {
   final Function()? onPressed;
@@ -15,17 +16,16 @@ class ErrorButton extends StatelessWidget {
       height: 50,
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStatePropertyAll(
-            Colors.white.withOpacity(0.5),
-          ),
+          elevation: const MaterialStatePropertyAll(0),
+          backgroundColor: MaterialStatePropertyAll(Colors.white.withOpacity(0.5)),
           shape: const MaterialStatePropertyAll(
-            RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+            RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
           ),
         ),
         onPressed: onPressed,
-        child: const Text(
-          'Retry',
-          style: TextStyle(
+        child: Text(
+          context.localization.errorButtonText,
+          style: const TextStyle(
             fontSize: 18,
             color: Color(0xFF313341),
           ),

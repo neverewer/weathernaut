@@ -10,7 +10,7 @@ import 'package:retrofit/retrofit.dart' as _i2;
 import 'package:weathernaut/src/core/data/data_sources/remote/weather_api_service.dart'
     as _i3;
 import 'package:weathernaut/src/core/data/models/current_weather.dart' as _i5;
-import 'package:weathernaut/src/core/data/models/weakly_weather.dart' as _i6;
+import 'package:weathernaut/src/core/data/models/daily_weather.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -94,8 +94,8 @@ class MockWeatherApiService extends _i1.Mock implements _i3.WeatherApiService {
           ) as _i4.Future<_i2.HttpResponse<_i5.CurrentWeatherModel>>);
 
   @override
-  _i4.Future<_i2.HttpResponse<_i6.WeaklyWeatherModel>>
-      getWeaklyWeatherForecastFromLocation({
+  _i4.Future<_i2.HttpResponse<_i6.DailyWeatherModel>>
+      getDailyWeatherForecastFromLocation({
     required String? key,
     required String? q,
     required int? days,
@@ -104,7 +104,7 @@ class MockWeatherApiService extends _i1.Mock implements _i3.WeatherApiService {
   }) =>
           (super.noSuchMethod(
             Invocation.method(
-              #getWeaklyWeatherForecastFromLocation,
+              #getDailyWeatherForecastFromLocation,
               [],
               {
                 #key: key,
@@ -115,11 +115,11 @@ class MockWeatherApiService extends _i1.Mock implements _i3.WeatherApiService {
               },
             ),
             returnValue:
-                _i4.Future<_i2.HttpResponse<_i6.WeaklyWeatherModel>>.value(
-                    _FakeHttpResponse_0<_i6.WeaklyWeatherModel>(
+                _i4.Future<_i2.HttpResponse<_i6.DailyWeatherModel>>.value(
+                    _FakeHttpResponse_0<_i6.DailyWeatherModel>(
               this,
               Invocation.method(
-                #getWeaklyWeatherForecastFromLocation,
+                #getDailyWeatherForecastFromLocation,
                 [],
                 {
                   #key: key,
@@ -131,11 +131,11 @@ class MockWeatherApiService extends _i1.Mock implements _i3.WeatherApiService {
               ),
             )),
             returnValueForMissingStub:
-                _i4.Future<_i2.HttpResponse<_i6.WeaklyWeatherModel>>.value(
-                    _FakeHttpResponse_0<_i6.WeaklyWeatherModel>(
+                _i4.Future<_i2.HttpResponse<_i6.DailyWeatherModel>>.value(
+                    _FakeHttpResponse_0<_i6.DailyWeatherModel>(
               this,
               Invocation.method(
-                #getWeaklyWeatherForecastFromLocation,
+                #getDailyWeatherForecastFromLocation,
                 [],
                 {
                   #key: key,
@@ -146,5 +146,5 @@ class MockWeatherApiService extends _i1.Mock implements _i3.WeatherApiService {
                 },
               ),
             )),
-          ) as _i4.Future<_i2.HttpResponse<_i6.WeaklyWeatherModel>>);
+          ) as _i4.Future<_i2.HttpResponse<_i6.DailyWeatherModel>>);
 }

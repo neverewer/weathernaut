@@ -3,13 +3,13 @@ import 'package:weathernaut/src/core/presentation/widgets/rounded_box.dart';
 import 'package:weathernaut/src/core/utils/extensions/context_extension.dart';
 import 'package:weathernaut/src/features/home/presentation/widgets/temp_widget.dart';
 
-class ListItemWidget extends StatelessWidget {
+class HourlyForecastItemWidget extends StatelessWidget {
   final String time;
   final String imagePath;
   final String temp;
   final bool isNow;
 
-  const ListItemWidget({
+  const HourlyForecastItemWidget({
     super.key,
     required this.time,
     required this.imagePath,
@@ -22,27 +22,28 @@ class ListItemWidget extends StatelessWidget {
     return RoundedBox(
       backgroundColor: isNow ? Colors.white : null,
       borderRadius: 30,
-      height: double.infinity,
-      width: 65,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 9),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              isNow ? context.localization.now : time,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Color(0XFF9f978f),
-              ),
-            ),
-            Image.asset(imagePath),
-            TempWidget(
-              temp: temp,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text(
+            isNow ? context.localization.now : time,
+            style: const TextStyle(
               fontSize: 16,
+              color: Color(0XFF9f978f),
             ),
-          ],
-        ),
+          ),
+          Image.asset(
+            imagePath,
+            width: 45,
+            height: 45,
+          ),
+          TempWidget(
+            temp: temp,
+            fontSize: 16,
+          ),
+        ],
       ),
     );
   }

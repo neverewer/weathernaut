@@ -63,8 +63,7 @@ class _WeatherApiService implements WeatherApiService {
   }
 
   @override
-  Future<HttpResponse<WeaklyWeatherModel>>
-      getWeaklyWeatherForecastFromLocation({
+  Future<HttpResponse<DailyWeatherModel>> getDailyWeatherForecastFromLocation({
     String? key,
     String? q,
     int? days,
@@ -83,7 +82,7 @@ class _WeatherApiService implements WeatherApiService {
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<WeaklyWeatherModel>>(Options(
+        _setStreamType<HttpResponse<DailyWeatherModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -99,7 +98,7 @@ class _WeatherApiService implements WeatherApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = WeaklyWeatherModel.fromJson(_result.data!);
+    final value = DailyWeatherModel.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }

@@ -7,10 +7,11 @@ import 'package:weathernaut/src/features/home/presentation/bloc/home_bloc.dart';
 import 'package:weathernaut/src/features/home/presentation/bloc/home_event.dart';
 import 'package:weathernaut/src/features/home/presentation/widgets/condition_widget.dart';
 import 'package:weathernaut/src/features/home/presentation/widgets/custom_divider.dart';
+import 'package:weathernaut/src/features/home/presentation/widgets/daily_forecast_widget.dart';
 import 'package:weathernaut/src/features/home/presentation/widgets/date_widget.dart';
-import 'package:weathernaut/src/features/home/presentation/widgets/list_item_widget.dart';
+import 'package:weathernaut/src/features/home/presentation/widgets/hourly_forecast_label.dart';
+import 'package:weathernaut/src/features/home/presentation/widgets/hourly_forecast_item_widget.dart';
 import 'package:weathernaut/src/features/home/presentation/widgets/list_separator.dart';
-import 'package:weathernaut/src/features/home/presentation/widgets/list_tab_bar.dart';
 import 'package:weathernaut/src/features/home/presentation/widgets/location_widget.dart';
 import 'package:weathernaut/src/features/home/presentation/widgets/temp_widget.dart';
 import 'package:weathernaut/src/features/home/presentation/widgets/weather_image_widget.dart';
@@ -18,83 +19,88 @@ import 'package:weathernaut/src/features/home/presentation/widgets/weather_stat_
 
 class HomeDataWidget extends StatelessWidget {
   final CurrentWeatherEntity currentWeatherForecast;
-  final List<DayEntity>? weaklyWeatherForecast;
+  final List<DayEntity> dailyWeatherForecast;
 
-  const HomeDataWidget({super.key, required this.currentWeatherForecast, required this.weaklyWeatherForecast});
+  const HomeDataWidget({
+    super.key,
+    required this.currentWeatherForecast,
+    required this.dailyWeatherForecast,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
       body: SafeArea(
         child: RefreshIndicator(
-          onRefresh: () async => context.read<HomeBLoC>().add(
-                const HomeEvent.fetch(),
-              ),
-          child: SizedBox.expand(
+          color: Colors.orange,
+          onRefresh: () async => context.read<HomeBLoC>().add(const HomeEvent.fetch()),
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Flexible(
-                  flex: 5,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 50, right: 25, left: 25),
-                    child: Column(
-                      children: [
-                        LocationWidget(text: currentWeatherForecast.location),
-                        const SizedBox(height: 15),
-                        DateWidget(text: currentWeatherForecast.formattedDate),
-                        const SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              WeatherImageWidget(imagePath: currentWeatherForecast.conditionImagePath),
-                              Column(
-                                children: [
-                                  TempWidget(temp: currentWeatherForecast.temp.toString()),
-                                  ConditionWidget(condition: currentWeatherForecast.conditionText),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 35),
-                        WeatherStatWidget(
-                          leadingImagePath: 'assets/images/stats/rainfall.png',
-                          label: context.localization.rainfall,
-                          value: '${currentWeatherForecast.rainfall}${context.localization.rainfallUnitOfMeasurement}',
-                        ),
-                        const SizedBox(height: 15),
-                        WeatherStatWidget(
-                          leadingImagePath: 'assets/images/stats/wind.png',
-                          label: context.localization.wind,
-                          value: '${currentWeatherForecast.windSpeed}${context.localization.windUnitOfMeasurement}',
-                        ),
-                        const SizedBox(height: 15),
-                        WeatherStatWidget(
+                Padding(
+                  padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
+                  child: Column(
+                    children: [
+                      LocationWidget(text: currentWeatherForecast.location),
+                      const SizedBox(height: 15),
+                      DateWidget(text: currentWeatherForecast.formattedDate),
+                      const SizedBox(height: 20),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Expanded(child: WeatherImageWidget(imagePath: currentWeatherForecast.conditionImagePath)),
+                          const SizedBox(width: 20),
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                TempWidget(temp: currentWeatherForecast.temp.toString()),
+                                ConditionWidget(condition: currentWeatherForecast.conditionText),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 35),
+                      WeatherStatWidget(
+                        leadingImagePath: 'assets/images/stats/rainfall.png',
+                        label: context.localization.rainfall,
+                        value: '${currentWeatherForecast.rainfall}${context.localization.rainfallUnitOfMeasurement}',
+                      ),
+                      const SizedBox(height: 15),
+                      WeatherStatWidget(
+                        leadingImagePath: 'assets/images/stats/wind.png',
+                        label: context.localization.wind,
+                        value: '${currentWeatherForecast.windSpeed}${context.localization.windUnitOfMeasurement}',
+                      ),
+                      const SizedBox(height: 15),
+                      WeatherStatWidget(
                           leadingImagePath: 'assets/images/stats/humidity.png',
                           label: context.localization.humidity,
-                          value: '${currentWeatherForecast.humidity}%',
-                        ),
-                        const Spacer(),
-                        ListTabBar(weaklyWeatherForecast: weaklyWeatherForecast),
-                        const SizedBox(height: 12),
-                        const CustomDivider()
-                      ],
-                    ),
+                          value: '${currentWeatherForecast.humidity}%'),
+                      const SizedBox(height: 25),
+                      DailyForecastWidget(dailyWeatherForecast: dailyWeatherForecast),
+                      const SizedBox(height: 20),
+                      const HourlyForecastLabel(),
+                      const SizedBox(height: 12),
+                      const CustomDivider()
+                    ],
                   ),
                 ),
-                Flexible(
-                  flex: 1,
+                SizedBox(
+                  height: 140,
                   child: ListView.separated(
+                      shrinkWrap: true,
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                       physics: const BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       itemCount: currentWeatherForecast.hourForecast.length,
                       itemBuilder: (_, index) {
-                        return ListItemWidget(
+                        return HourlyForecastItemWidget(
                           isNow: currentWeatherForecast.hourForecast[index].isNow,
                           time: currentWeatherForecast.hourForecast[index].time,
                           imagePath: currentWeatherForecast.hourForecast[index].conditionImageUrl,
@@ -104,7 +110,7 @@ class HomeDataWidget extends StatelessWidget {
                       separatorBuilder: (_, __) {
                         return const ListSeparator();
                       }),
-                )
+                ),
               ],
             ),
           ),

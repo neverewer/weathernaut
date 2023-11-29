@@ -9,6 +9,7 @@ import 'package:weathernaut/src/core/domain/repositories/weather_repository.dart
 import 'package:weathernaut/src/core/utils/constants/strings.dart';
 import 'package:weathernaut/src/core/utils/exceptions/network_exceptions.dart';
 import 'package:weathernaut/src/core/utils/extensions/string_extension.dart';
+import 'package:weathernaut/src/core/utils/locale_utils.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {
   final WeatherApiService weatherApiService;
@@ -21,12 +22,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
   Future<CurrentWeatherEntity?> getCurrentWeatherForecast(String location) async {
     try {
       var response = await weatherApiService.getCurrentWeatherForecastFromLocation(
-        key: weatherApiKey,
-        q: location,
-        days: 1,
-        tp: 15,
-        lang: Platform.localeName.getShortLocaleName(),
-      );
+          key: weatherApiKey, q: location, days: 1, tp: 15, lang: LocaleUtils.getShortLocaleName(Platform.localeName));
 
       var currentWeather = response.data.toEntity();
 
@@ -53,14 +49,14 @@ class WeatherRepositoryImpl implements WeatherRepository {
   }
 
   @override
-  Future<List<DayEntity>?> getWeaklyWeatherForecast(String location) async {
+  Future<List<DayEntity>?> getDailyWeatherForecast(String location) async {
     try {
-      var response = await weatherApiService.getWeaklyWeatherForecastFromLocation(
+      var response = await weatherApiService.getDailyWeatherForecastFromLocation(
         key: weatherApiKey,
         q: location,
-        days: 8,
+        days: 3,
         hour: 24,
-        lang: Platform.localeName.getShortLocaleName(),
+        lang: LocaleUtils.getShortLocaleName(Platform.localeName),
       );
 
       var weaklyWeatherForecast = response.data.forecast.forecastday.map((e) => e.day.toEntity(e.date)).toList();

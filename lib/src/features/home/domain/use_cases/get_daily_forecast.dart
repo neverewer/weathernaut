@@ -8,7 +8,7 @@ class GetWeaklyForecastUseCase {
 
   Future<List<DayEntity>?> call(String location) async {
     try {
-      final weaklyForecast = await weatherRepository.getWeaklyWeatherForecast(location);
+      final weaklyForecast = await weatherRepository.getDailyWeatherForecast(location);
       return weaklyForecast;
     } on Object catch (e, stackTrace) {
       Error.throwWithStackTrace(e, stackTrace);

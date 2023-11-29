@@ -14,7 +14,7 @@ sealed class HomeState extends _$HomeStateBase {
   /// {@macro home_state}
   const factory HomeState.idle({
     required CurrentWeatherEntity? currentWeatherForecast,
-    required List<DayEntity>? weaklyWeatherForecast,
+    required List<DayEntity>? dailyWeatherForecast,
     String message,
   }) = HomeState$Idle;
 
@@ -22,7 +22,7 @@ sealed class HomeState extends _$HomeStateBase {
   /// {@macro home_state}
   const factory HomeState.processing({
     required CurrentWeatherEntity? currentWeatherForecast,
-    required List<DayEntity>? weaklyWeatherForecast,
+    required List<DayEntity>? dailyWeatherForecast,
     String message,
   }) = HomeState$Processing;
 
@@ -30,7 +30,7 @@ sealed class HomeState extends _$HomeStateBase {
   /// {@macro home_state}
   const factory HomeState.successful({
     required CurrentWeatherEntity? currentWeatherForecast,
-    required List<DayEntity>? weaklyWeatherForecast,
+    required List<DayEntity>? dailyWeatherForecast,
     String message,
   }) = HomeState$Successful;
 
@@ -38,13 +38,13 @@ sealed class HomeState extends _$HomeStateBase {
   /// {@macro home_state}
   const factory HomeState.error({
     required CurrentWeatherEntity? currentWeatherForecast,
-    required List<DayEntity>? weaklyWeatherForecast,
+    required List<DayEntity>? dailyWeatherForecast,
     String message,
+    required Object error,
   }) = HomeState$Error;
 
   /// {@macro home_state}
-  const HomeState(
-      {required super.currentWeatherForecast, required super.weaklyWeatherForecast, required super.message});
+  const HomeState({required super.currentWeatherForecast, required super.dailyWeatherForecast, required super.message});
 }
 
 /// Idling state
@@ -52,7 +52,7 @@ sealed class HomeState extends _$HomeStateBase {
 final class HomeState$Idle extends HomeState with _$HomeState {
   /// {@nodoc}
   const HomeState$Idle(
-      {required super.currentWeatherForecast, required super.weaklyWeatherForecast, super.message = 'Idling'});
+      {required super.currentWeatherForecast, required super.dailyWeatherForecast, super.message = 'Idling'});
 }
 
 /// Processing
@@ -60,7 +60,7 @@ final class HomeState$Idle extends HomeState with _$HomeState {
 final class HomeState$Processing extends HomeState with _$HomeState {
   /// {@nodoc}
   const HomeState$Processing(
-      {required super.currentWeatherForecast, required super.weaklyWeatherForecast, super.message = 'Processing'});
+      {required super.currentWeatherForecast, required super.dailyWeatherForecast, super.message = 'Processing'});
 }
 
 /// Successful
@@ -68,17 +68,19 @@ final class HomeState$Processing extends HomeState with _$HomeState {
 final class HomeState$Successful extends HomeState with _$HomeState {
   /// {@nodoc}
   const HomeState$Successful(
-      {required super.currentWeatherForecast, required super.weaklyWeatherForecast, super.message = 'Successful'});
+      {required super.currentWeatherForecast, required super.dailyWeatherForecast, super.message = 'Successful'});
 }
 
 /// Error
 /// {@nodoc}
 final class HomeState$Error extends HomeState with _$HomeState {
   /// {@nodoc}
+  final Object error;
   const HomeState$Error(
       {required super.currentWeatherForecast,
-      required super.weaklyWeatherForecast,
-      super.message = 'An error has occurred.'});
+      required super.dailyWeatherForecast,
+      super.message = 'An error has occurred.',
+      required this.error});
 }
 
 /// {@nodoc}
@@ -93,7 +95,7 @@ abstract base class _$HomeStateBase {
   /// {@nodoc}
   const _$HomeStateBase({
     required this.currentWeatherForecast,
-    required this.weaklyWeatherForecast,
+    required this.dailyWeatherForecast,
     required this.message,
   });
 
@@ -102,7 +104,7 @@ abstract base class _$HomeStateBase {
   final CurrentWeatherEntity? currentWeatherForecast;
 
   @nonVirtual
-  final List<DayEntity>? weaklyWeatherForecast;
+  final List<DayEntity>? dailyWeatherForecast;
 
   /// Message or state description.
   @nonVirtual
@@ -112,7 +114,7 @@ abstract base class _$HomeStateBase {
   bool get hasCurrentWeatherForecast => currentWeatherForecast != null;
 
   /// Has weakly weather forecast?
-  bool get hasWeaklyWeatherForecast => weaklyWeatherForecast != null;
+  bool get hasDailyWeatherForecast => dailyWeatherForecast != null;
 
   /// If an error has occurred?
   bool get hasError => maybeMap<bool>(orElse: () => false, error: (_) => true);
@@ -168,7 +170,7 @@ abstract base class _$HomeStateBase {
       );
 
   @override
-  int get hashCode => currentWeatherForecast.hashCode ^ weaklyWeatherForecast.hashCode;
+  int get hashCode => currentWeatherForecast.hashCode ^ dailyWeatherForecast.hashCode;
 
   @override
   bool operator ==(Object other) => identical(this, other);

@@ -6,6 +6,11 @@
     "windUnitOfMeasurement": "km/h",
     "humidity" : "Humidity",
     "hourlyForecastLabel" : "24h forecast",
-    "next7Days" : "Next 7 days",
-    "now" : "now"
+    "dailyForecastLabel" : "Next 3 days",
+    "now" : "now",
+    "locationPermissionDeniedErrorMessage" : "Location permission denied. Please give the app permission to deterimine location and try again",
+    "locationServiceDisabledErrorMessage" : "Please turn on your location service and try again",
+    "networkErrorMessage" : "Check your internet connection and try again",
+    "unknownErrorMessage" : "Oh! Something went wrong. Please try again",
+    "errorButtonText" : "Retry"
 }

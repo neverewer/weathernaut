@@ -6,6 +6,11 @@
     "windUnitOfMeasurement": "км/ч",
     "humidity" : "Влажность",
     "hourlyForecastLabel" : "24ч прогноз",
-    "next7Days" : "След. 7 дней",
-    "now" : "Сейчас"
+    "dailyForecastLabel" : "Прогноз на 3 дня",
+    "now" : "Сейчас",
+    "locationPermissionDeniedErrorMessage" : "Разрешение на определение местоположения отклонено. Пожалуйста, дайте приложению разрешение на определение местоположения и повторите попытку",
+    "locationServiceDisabledErrorMessage" : "Пожалуйста, включите службу определения местоположения и повторите попытку",
+    "networkErrorMessage" : "Проверьте подключение к Интернету и повторите попытку",
+    "unknownErrorMessage" : "Ой! Что-то пошло не так. Пожалуйста, попробуйте еще раз",
+    "errorButtonText" : "Повторить"
 }

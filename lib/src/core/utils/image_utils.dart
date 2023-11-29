@@ -1,6 +1,6 @@
 import 'package:l/l.dart';
 import 'package:weathernaut/src/core/utils/constants/strings.dart';
-import 'package:weathernaut/src/core/utils/time_utils.dart';
+import 'package:weathernaut/src/core/utils/date_time_utils.dart';
 
 sealed class ImageUtils {
   @Deprecated('Uses getImagePathFromCode')
@@ -64,7 +64,7 @@ sealed class ImageUtils {
   /// Returns the image path based on the condition code of api
   static String getImagePathFromCode({required int conditionCode, int? isDay}) {
     try {
-      final markOfDay = isDay != null ? TimeUtils.getMarkOfDay(isDay) : 'd';
+      final markOfDay = isDay != null ? DateTimeUtils.getMarkOfDay(isDay) : 'd';
       final imageName = conditionCodeToImageName[conditionCode];
 
       if (imageName == null) {

@@ -11,10 +11,6 @@ class Themes {
           elevation: 0,
           backgroundColor: Colors.transparent,
         ),
-        // textTheme: const TextTheme(
-        //   bodyMedium: ,
-        //   displayMedium: TextStyle(color: Colors.green),
-        //   displaySmall: TextStyle(color: Colors.green),
-        // ).);
+        textTheme: const TextTheme(),
       );
 }
