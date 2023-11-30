@@ -26,7 +26,10 @@ class RoundedBox extends StatelessWidget {
       decoration: BoxDecoration(
           color: backgroundColor ?? Colors.white.withOpacity(0.5),
           borderRadius: BorderRadius.all(Radius.circular(borderRadius ?? 16))),
-      child: Padding(padding: contentPadding ?? EdgeInsets.zero, child: child),
+      child: Padding(
+        padding: contentPadding ?? EdgeInsets.zero,
+        child: child,
+      ),
     );
   }
 }
