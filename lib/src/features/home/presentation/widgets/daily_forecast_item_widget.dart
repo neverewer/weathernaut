@@ -25,7 +25,7 @@ class DailyForecastItemWidget extends StatelessWidget {
       ),
       title: Text(
         day.dayOfWeek,
-        style: const TextStyle(fontSize: 16),
+        style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w400),
       ),
       trailing: TempWidget(
         temp: day.maxTemp.toString(),

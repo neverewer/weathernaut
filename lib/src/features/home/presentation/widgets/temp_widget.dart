@@ -13,10 +13,9 @@ class TempWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
         '$temp°',
-        style: TextStyle(
-          fontSize: fontSize ?? 60,
-          fontWeight: FontWeight.w600,
-          color: const Color(0xFF313341),
-        ),
+        style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+              fontWeight: FontWeight.w600,
+              fontSize: fontSize,
+            ),
       );
 }

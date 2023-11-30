@@ -14,11 +14,10 @@ class DateWidget extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         text,
-        style: const TextStyle(
-          fontSize: 20,
-          color: Color(0XFF9f978f),
-          fontWeight: FontWeight.w400,
-        ),
+        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+              fontWeight: FontWeight.w400,
+              color: const Color(0XFF9f978f),
+            ),
       ),
     );
   }

@@ -14,11 +14,9 @@ class LocationWidget extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         text,
-        style: const TextStyle(
-          fontSize: 34,
-          fontWeight: FontWeight.w500,
-          color: Color(0xFF313341),
-        ),
+        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
       ),
     );
   }

@@ -2,10 +2,10 @@ import 'package:weathernaut/src/core/data/data_sources/local/position_service.da
 import 'package:weathernaut/src/core/domain/entites/position.dart';
 import 'package:weathernaut/src/core/domain/repositories/position_repository.dart';
 
-class PositionRepositoryImp implements PositionRepository {
+class PositionRepositoryImpl implements PositionRepository {
   final PositionService positionService;
 
-  PositionRepositoryImp({
+  PositionRepositoryImpl({
     required this.positionService,
   });
 

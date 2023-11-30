@@ -13,10 +13,8 @@ class ConditionWidget extends StatelessWidget {
         condition,
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
-          fontSize: 34,
-          fontWeight: FontWeight.w400,
-          color: Color(0xFF313341),
-        ),
+        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+              fontWeight: FontWeight.w400,
+            ),
       );
 }

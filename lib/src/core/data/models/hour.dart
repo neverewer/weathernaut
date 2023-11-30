@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:weathernaut/src/core/data/models/condition.dart';
 import 'package:weathernaut/src/core/domain/entites/hour.dart';
-import 'package:weathernaut/src/core/utils/extensions/string_extension.dart';
 import 'package:weathernaut/src/core/utils/date_time_utils.dart';
 import 'package:weathernaut/src/core/utils/image_utils.dart';
 

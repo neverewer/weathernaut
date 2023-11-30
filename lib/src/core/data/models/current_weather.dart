@@ -3,7 +3,6 @@ import 'package:weathernaut/src/core/data/models/current.dart';
 import 'package:weathernaut/src/core/data/models/forecast.dart';
 import 'package:weathernaut/src/core/data/models/location.dart';
 import 'package:weathernaut/src/core/domain/entites/current_weather.dart';
-import 'package:weathernaut/src/core/utils/extensions/string_extension.dart';
 import 'package:weathernaut/src/core/utils/date_time_utils.dart';
 import 'package:weathernaut/src/core/utils/image_utils.dart';
 
@@ -40,6 +39,5 @@ class CurrentWeatherModel {
       hourForecast: forecast.forecastday
           .map((forecastDay) => forecastDay.hour)
           .expand((hourList) => hourList.map((e) => e.toEntity()))
-          .where((hourEntity) => DateTimeUtils.getTimeHour(hourEntity.time) >= DateTime.now().hour)
           .toList());
 }

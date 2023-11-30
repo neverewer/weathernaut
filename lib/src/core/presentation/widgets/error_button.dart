@@ -15,14 +15,13 @@ class ErrorButton extends StatelessWidget {
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
+        onPressed: onPressed,
         style: ButtonStyle(
           elevation: const MaterialStatePropertyAll(0),
           backgroundColor: MaterialStatePropertyAll(Colors.white.withOpacity(0.5)),
           shape: const MaterialStatePropertyAll(
-            RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
-          ),
+              RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16)))),
         ),
-        onPressed: onPressed,
         child: Text(
           context.localization.errorButtonText,
           style: const TextStyle(

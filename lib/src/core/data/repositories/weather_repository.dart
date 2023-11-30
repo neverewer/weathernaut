@@ -8,7 +8,6 @@ import 'package:weathernaut/src/core/domain/entites/day.dart';
 import 'package:weathernaut/src/core/domain/repositories/weather_repository.dart';
 import 'package:weathernaut/src/core/utils/constants/strings.dart';
 import 'package:weathernaut/src/core/utils/exceptions/network_exceptions.dart';
-import 'package:weathernaut/src/core/utils/extensions/string_extension.dart';
 import 'package:weathernaut/src/core/utils/locale_utils.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {

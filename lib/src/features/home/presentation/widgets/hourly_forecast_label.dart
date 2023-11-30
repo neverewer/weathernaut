@@ -10,11 +10,9 @@ class HourlyForecastLabel extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         context.localization.hourlyForecastLabel,
-        style: const TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-          color: Color(0xFF313341),
-        ),
+        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
       ),
     );
   }

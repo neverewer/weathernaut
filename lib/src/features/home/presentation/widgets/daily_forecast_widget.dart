@@ -22,7 +22,7 @@ class DailyForecastWidget extends StatelessWidget {
           children: [
             Text(
               context.localization.dailyForecastLabel,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w500),
             ),
             ...dailyWeatherForecast.map((e) => DailyForecastItemWidget(day: e)).toList(),
           ],

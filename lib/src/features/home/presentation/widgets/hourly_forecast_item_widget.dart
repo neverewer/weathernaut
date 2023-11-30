@@ -29,10 +29,7 @@ class HourlyForecastItemWidget extends StatelessWidget {
         children: [
           Text(
             isNow ? context.localization.now : time,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Color(0XFF9f978f),
-            ),
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: const Color(0XFF9f978f)),
           ),
           Image.asset(
             imagePath,

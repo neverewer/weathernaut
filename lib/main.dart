@@ -21,6 +21,7 @@ void main() => l.capture<void>(
       () => runZonedGuarded<void>(
         () async {
           var bindings = WidgetsFlutterBinding.ensureInitialized()..deferFirstFrame();
+
           FlutterNativeSplash.preserve(widgetsBinding: bindings);
           bindings.addPostFrameCallback((timeStamp) {
             bindings.allowFirstFrame();
@@ -63,7 +64,7 @@ Future<Dependencies> createDependencies() async {
   final WeatherApiService weatherApiService = WeatherApiService(dio);
   final WeatherRepository weatherRepository = WeatherRepositoryImpl(weatherApiService: weatherApiService);
   final PositionService positionService = PositionService();
-  final PositionRepository positionRepository = PositionRepositoryImp(positionService: positionService);
+  final PositionRepository positionRepository = PositionRepositoryImpl(positionService: positionService);
   final Dependencies dependencies = Dependencies(
     positionRepository: positionRepository,
     weatherRepository: weatherRepository,
