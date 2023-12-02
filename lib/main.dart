@@ -20,10 +20,14 @@ import 'package:weathernaut/src/features/dependencies/model/dependencies.dart';
 void main() => l.capture<void>(
       () => runZonedGuarded<void>(
         () async {
+          //Initialize widgets binding with not showing first frame
           var bindings = WidgetsFlutterBinding.ensureInitialized()..deferFirstFrame();
 
+          //Show splash screen
           FlutterNativeSplash.preserve(widgetsBinding: bindings);
-          bindings.addPostFrameCallback((timeStamp) {
+
+          //Call bindings to show first frame and runApp
+          bindings.addPostFrameCallback((_) {
             bindings.allowFirstFrame();
           });
           //set orientation
@@ -38,15 +42,24 @@ void main() => l.capture<void>(
             ),
           );
 
+          // Create router
           final router = AppRouter();
+
+          //Create dependencies
           final dependencies = await createDependencies();
+
+          //Request permission to access location
           await Geolocator.requestPermission();
+
+          //Run app
           runApp(
             App(
               router: router,
               dependencies: dependencies,
             ),
           );
+
+          //Remove splash screen
           FlutterNativeSplash.remove();
         },
         l.e,
@@ -59,6 +72,7 @@ void main() => l.capture<void>(
       ),
     );
 
+//Create immutable dependencies
 Future<Dependencies> createDependencies() async {
   final Dio dio = Dio();
   final WeatherApiService weatherApiService = WeatherApiService(dio);
